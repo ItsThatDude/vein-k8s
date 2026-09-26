@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - Chart.yaml
+      - chart/Chart.yaml
 
 jobs:
   sync:
