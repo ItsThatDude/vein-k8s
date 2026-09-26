@@ -15,23 +15,21 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.pvc.gamefiles.size }}
-
 ---
-
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-    name: {{ include "vein-k8s.fullname" . }}-backupfiles
+    name: {{ include "vein-k8s.fullname" . }}-backups
     namespace: {{ .Release.Namespace }}
     annotations:
         helm.sh/resource-policy: keep
 spec:
-  {{ if .Values.storage.pvc.storageClassName }}
-  storageClassName: {{ .Values.storage.pvc.backupfiles.storageClassName }}
+  {{ if .Values.storage.pvc.backups.storageClassName }}
+  storageClassName: {{ .Values.storage.pvc.backups.storageClassName }}
   {{ end }}
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.storage.pvc.backupfiles.size }}
+      storage: {{ .Values.storage.pvc.backups.size }}
 {{ end }}
