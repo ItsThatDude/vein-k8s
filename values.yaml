@@ -43,6 +43,8 @@ resources:
     limits:
       memory: 500Mi
 
+existingSecret: 
+
 VEIN_SERVER_BACKUP_SRC_DIR: /data
 VEIN_SERVER_BACKUP_DIR: /backup
 VEIN_SERVER_BACKUP_RETENTION: 5

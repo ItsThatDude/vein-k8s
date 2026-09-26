@@ -61,11 +61,17 @@ spec:
               value: {{ .Values.PGID | toString | quote }}
             - name: VEIN_SERVER_NAME
               value: {{ .Values.VEIN_SERVER_NAME }}
+            {{- if or .Values.VEIN_SERVER_PASSWORD .Values.existingSecret }}
             - name: VEIN_SERVER_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  {{- if .Values.existingSecret }}
+                  name: {{ .Values.existingSecret }}
+                  {{- else }}
                   name: {{ include "vein-k8s.fullname" . }}-secret
+                  {{- end }}
                   key: serverPassword
+            {{- end }}
             - name: VEIN_SERVER_DESCRIPTION
               value: {{ .Values.VEIN_SERVER_DESCRIPTION }}
             - name: VEIN_SERVER_AUTO_UPDATE 

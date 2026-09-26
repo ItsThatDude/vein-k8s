@@ -6,11 +6,11 @@ Kubernetes deployment for Vein dedicated server. This chart uses [ghcr.io/radica
 ## Usage
 
 ```bash
-helm repo add radical-egg https://radical-egg.github.io/pineapple-bun/
+helm repo add ItsThatDude https://itsthatdude.github.io/helm-charts/
 helm repo update
-helm install vein radical-egg/vein-k8s \
-	--set VEIN_SERVER_NAME="Eggs Strange World" \
-    --set VEIN_SERVER_DESCRIPTION="nollie 360 flips" \
+helm install vein ItsThatDude/vein-k8s \
+	--set VEIN_SERVER_NAME="Vein Server" \
+    --set VEIN_SERVER_DESCRIPTION="Dedicated Vein Server" \
 	--set VEIN_SERVER_PASSWORD="secretpass" \
 ```
 
@@ -18,9 +18,9 @@ helm install vein radical-egg/vein-k8s \
 
 | Variable                                          | Default                                   |
 | --------                                          | -------                                   |
-| image.game.repoistory                             | ghcr.io/radical-egg/vein-dedicated-server |
+| image.game.repository                             | ghcr.io/radical-egg/vein-dedicated-server |
 | image.game.tag                                    | latest                                    |
-| image.backups.repoistory                          | ghcr.io/radical-egg/vein-dedicated-backup |
+| image.backups.repository                          | ghcr.io/radical-egg/vein-dedicated-backup |
 | image.backups.tag                                 | latest                                    |
 | resources.game.requests                           | { memory: 6Gi }                           |
 | resources.game.limits                             | { memory: 12Gi }                          |
