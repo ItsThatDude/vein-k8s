@@ -8,8 +8,8 @@ metadata:
     {{- toYaml .Values.service.annotations | nindent 4 }}
   {{- end }}
 spec:
-  {{- if kindIs "bool" .Values.service.allocateLoadBalanceNodePorts }}
-  allocateLoadBalanceNodePorts: {{ .Values.service.allocateLoadBalanceNodePorts }}
+  {{- if kindIs "bool" .Values.service.allocateLoadBalancerNodePorts }}
+  allocateLoadBalancerNodePorts: {{ .Values.service.allocateLoadBalancerNodePorts }}
   {{- end }}
   type: {{ .Values.networking.type }}
   selector:
