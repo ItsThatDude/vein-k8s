@@ -1,0 +1,4 @@
+itsthatdude/helm-charts:
+  - source: .
+    dest: charts/vein-k8s/
+    deleteOrphaned: true
