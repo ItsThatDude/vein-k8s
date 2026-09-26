@@ -3,7 +3,14 @@ kind: Service
 metadata:
   name: {{ include "vein-k8s.fullname" . }}-svc
   namespace: {{ .Release.Namespace }}
+  {{- if .Values.service.annotations }}
+  annotations:
+    {{- toYaml .Values.service.annotations | nindent 4 }}
+  {{- end }}
 spec:
+  {{- if kindIs "bool" .Values.service.allocateLoadBalanceNodePorts }}
+  allocateLoadBalanceNodePorts: {{ .Values.service.allocateLoadBalanceNodePorts }}
+  {{- end }}
   type: {{ .Values.networking.type }}
   selector:
     app: {{ .Release.Name }}
